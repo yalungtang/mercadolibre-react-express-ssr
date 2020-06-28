@@ -12,7 +12,6 @@ const replaceApp = (response, initialProps) => {
       console.log(error);
       return response.status(500).send('Server error')
     }
-    console.log(typeof initialProps)
     response.send(data.replace('<div id="root"></div>', `<div id="root" data-init='${JSON.stringify(initialProps)}'>${ReactDOMServer.renderToString(<App {...initialProps} />)}</div>`));
   })
 }
