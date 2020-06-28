@@ -1,8 +1,9 @@
 import React from 'react';
+// import '../styles/main.scss';
 
 const App = (props) => {
     return (
-    <div>OK</div>
+    <div>OK done</div>
     )
 };
 

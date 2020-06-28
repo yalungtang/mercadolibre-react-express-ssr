@@ -22,7 +22,7 @@ app.get('/api/items/:id', handleGetItem);
 
 // 404
 app.get('*', function(req, res){
-    res.status(404).send('Sorry');
+    res.status(404).send('Sorry we cannot show any results');
   });
 
 app.listen(port, () => console.log(`Marketplace search listening on port ${port}!`));

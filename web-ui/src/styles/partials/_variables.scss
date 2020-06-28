@@ -1,0 +1,44 @@
+// Colors
+$white: #ffffff !default;
+$yellow: #ffe600 !default;
+$charcoal: #333333 !default;
+$gray-dark: #666666 !default;
+$gray-medium: #999999 !default;
+$gray-light: #eeeeee !default;
+$blue: #3483fa !default;
+$black: #000 !default;
+
+// Typography
+$font-family-sans-serif: "Proxima Nova", "-apple-system", "Helvetica Neue", Helvetica, "Roboto", Arial, sans-serif !default;
+// $font-family-serif: Georgia, "Times New Roman", Times, serif !default;
+// $font-family-monospace: Monaco, Menlo, Consolas, "Courier New", monospace !default;
+$font-family-base: $font-family-sans-serif !default;
+
+$font-size-base: 1rem !default; // Assumes the browser default, typically `16px`
+
+$line-height-base: 1.5 !default;
+
+$font-weight-light: 300 !default;
+$font-weight-normal: 400 !default;
+$font-weight-strong: 500 !default;
+$font-weight-bold: 700 !default;
+
+$font-weight-base: $font-weight-normal !default;
+
+// Font Sizes search results
+$font-bar-size: 18px;
+$font-location-size: 12px;
+$font-breadcrumb-size: 14px;
+$font-search-title-size: 18px;
+$font-search-price-size: 24px;
+
+// Font Sizes single item
+$font-condition-size: 14px;
+$font-single-title-size: 24px;
+$font-single-price-size: 46px;
+$font-description-title-size: 28px;
+$font-description-content-size: 16px;
+
+// Main Styles
+$body-bg: $white !default;
+$text-color: $charcoal !default;

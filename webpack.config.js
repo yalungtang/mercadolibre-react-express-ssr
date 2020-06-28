@@ -1,8 +1,9 @@
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
-  entry: './web-ui/src/index.js',
+  entry: './web-ui/src',
   output: {
     path: path.resolve(__dirname, 'dist/ui'),
     filename: '[name].js'
