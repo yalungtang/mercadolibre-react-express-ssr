@@ -1,0 +1,6 @@
+{
+  "ignore": [
+    "web-ui",
+    "node_modules"
+  ]
+}

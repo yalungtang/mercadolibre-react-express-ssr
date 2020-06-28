@@ -1,15 +1,16 @@
 {
-  "name": "marketplace-search-api",
+  "name": "marketplace-search",
   "version": "1.0.0",
-  "description": "A simplified version of a search engine",
+  "description": "A simplified version of a search engine for the MercadoLibre Marketplace API",
   "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build:server": "rimraf dist/ && babel ./server --out-dir dist/ --copy-files && npm run build:ui",
-    "start:prod": "npm run build:server && babel-node dist/index.js",
-    "start:dev": "nodemon --exec babel-node ./server",
     "build:ui": "webpack --mode production",
-    "start:ui": "webpack-dev-server --open --mode development"
+    "build:prod": "rimraf dist/ && babel ./server --out-dir dist/ --copy-files && npm run build:ui",
+    "serve:prod": "npm run build:prod && babel-node dist/index.js",
+    "watch:be": "nodemon --exec babel-node ./server",
+    "watch:ui": "webpack --watch --mode development",
+    "dev": "npm-run-all -p watch:ui watch:be"
   },
   "author": "Yalung Tang",
   "license": "ISC",
@@ -32,6 +33,7 @@
     "babel-loader": "^8.1.0",
     "html-loader": "^1.1.0",
     "html-webpack-plugin": "^4.3.0",
+    "npm-run-all": "^4.1.5",
     "react-devtools": "^4.7.0",
     "redux-devtools": "^3.5.0",
     "rimraf": "^3.0.2",

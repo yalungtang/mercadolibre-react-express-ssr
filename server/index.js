@@ -14,8 +14,15 @@ app.get('/', (req, res) => res.sendFile('index.html'));
 
 app.get('/items', handleSSR);
 
+app.get('/items:id', handleSSR);
+
 app.get('/api/items', handleSearch);
 
 app.get('/api/items/:id', handleGetItem);
+
+// 404
+app.get('*', function(req, res){
+    res.status(404).send('Sorry');
+  });
 
 app.listen(port, () => console.log(`Marketplace search listening on port ${port}!`));
