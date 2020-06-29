@@ -1,29 +1,27 @@
 import React, { useEffect, useState } from 'react';
 import { isEmpty } from 'lodash';
-import Header from './Header';
+import ResultsList from './ResultsList';
 import { searchApi } from '../services';
 
 const SearchResults = (props) => {
   const [results, updateResults] = useState({});
-  useEffect(() => {
-    const query = props.searchParams.get('search');
-    searchApi(query).then((response) => updateResults(response.data));
-  }, []);
-  const { author, categories, items } = results;
 
-  if (isEmpty(results)) {
+  useEffect(() => {
+    if (isEmpty(props.results)) {
+      const query = props.searchParams.get('search');
+      searchApi(query).then((response) => {
+        props.updateInitial({ searchResults: response.data })
+      });
+    } else {
+      updateResults(props.results);
+    }
+  }, []);
+
+  if (isEmpty(results) && isEmpty(props.results)) {
     return 'Loading';
   }
 
-  if (!isEmpty(results) && isEmpty(items)) {
-    return 'No results';
-  }
-
-  return (
-    <>{items.map((item) => {
-      return <div>{item.title}</div>
-    })}</>
-  )
+  return (<ResultsList results={!isEmpty(results) ? results : props.results} />)
 };
 
 export default SearchResults;

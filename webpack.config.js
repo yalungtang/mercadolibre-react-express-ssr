@@ -6,6 +6,7 @@ module.exports = {
   entry: './web-ui/src',
   output: {
     path: path.resolve(__dirname, 'dist/ui'),
+    publicPath: '/',
     filename: '[name].js'
   },
   plugins: [

@@ -14,7 +14,7 @@ app.get('/', (req, res) => res.sendFile('index.html'));
 
 app.get('/items', handleSSR);
 
-app.get('/items:id', handleSSR);
+app.get('/items/:id', handleSSR);
 
 app.get('/api/items', handleSearch);
 

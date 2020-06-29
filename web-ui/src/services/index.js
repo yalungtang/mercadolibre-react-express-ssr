@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const searchItem = (id) => {
+export const getItem = (id) => {
   return axios.get(`http://localhost:3000/api/items/${id}`)
 };
 

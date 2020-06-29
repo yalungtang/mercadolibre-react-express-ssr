@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
-import { useHistory } from "react-router-dom";
 
-const SearchBar = () => {
+const SearchBar = (props) => {
   const [inputValue, updateInput] = useState('');
-  let history = useHistory();
 
   const handleKeyDown = (e) => {
     if (e.key === 'Enter' && inputValue.length) {
-      history.push(`/items?search=${inputValue}`);
+      props.triggerSearch(inputValue)
     }
   }
 

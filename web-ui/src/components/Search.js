@@ -3,7 +3,7 @@ import Header from './Header';
 
 const Search = (props) => {
   return (
-    <><Header /></>
+    <><Header {...props} /></>
   )
 };
 
