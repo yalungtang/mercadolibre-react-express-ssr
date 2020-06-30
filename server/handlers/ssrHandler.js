@@ -6,7 +6,6 @@ import ReactDOMServer from 'react-dom/server'
 import axios from 'axios';
 
 import App from '../../web-ui/src/components/App';
-import { fromPairs } from 'lodash';
 
 const replaceApp = (request ,response, initialProps) => {
   fs.readFile(path.resolve('./dist/ui/index.html'), 'utf-8', (error, data) => {
