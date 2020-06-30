@@ -4,23 +4,18 @@ import { isEmpty } from 'lodash';
 import { getItem } from '../services';
 
 const Item = (props) => {
-  console.log('item props', props)
-  const [stateitem, updateStateItem] = useState({});
-
   useEffect(() => {
-    if (isEmpty(props.item)) {
+    if (props.match.params.id !== props.item.id) {
       const { id } = props.match ? props.match.params : {};
-      getItem(id).then((response) => updateStateItem(response.data.item));
-    } else {
-      updateStateItem(props.item);
+      getItem(id).then((response) => props.updateState({ item: response.data.item }));
     }
   }, []);
 
-  if (isEmpty(stateitem) && isEmpty(props.item)) {
+  if (isEmpty(props.item) || props.match.params.id !== props.item.id) {
     return 'Loading';
   }
 
-  const { title } = !isEmpty(stateitem) ? stateitem : props.item;
+  const { title } = props.item;
 
   return (
     <>{title}</>

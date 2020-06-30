@@ -31,18 +31,16 @@ const ssrHandler = (request, response) => {
   const id = request.params.id;
   const searchQuery = request.query.search;
 
-  console.log('this is the requested id:', id);
   if (id) {
     axios.get(`http://localhost:3000/api/items/${id}`).then((r) => {
     const { item } = r.data;
-    console.log(item)
       replaceApp(request, response, { item })
-    }).catch((e) => response.send(e));
+    }).catch((e) => response.status(404).send('Item not found'));
   } else if (searchQuery) {
     axios.get(`http://localhost:3000/api/items?search=${searchQuery}`).then((r) => {
       const { items, categories } = r.data;
       replaceApp(request, response, { searchResults: { items, categories } })
-    }).catch((e) => response.send(e));
+    }).catch((e) => response.status(404).send('No results'));
   } else {
     replaceApp(request, response, {})
   }
