@@ -2,11 +2,13 @@ import React, { useEffect } from 'react';
 import { isEmpty } from 'lodash';
 import ResultsList from './ResultsList';
 import { searchApi } from '../services';
+import withSearch from './withSearch';
+import SEO from './SEO';
 
 const SearchResults = (props) => {
+  const query = props.searchParams.get('search');
   useEffect(() => {
     if (isEmpty(props.results)) {
-      const query = props.searchParams.get('search');
       searchApi(query).then((response) => {
         props.updateState({ searchResults: response.data })
       }).catch((e) => {
@@ -25,7 +27,10 @@ const SearchResults = (props) => {
     return 'Loading';
   }
 
-  return (<ResultsList results={props.results} />)
+  return (<>
+    <SEO title={`Resultados de "${query}" | MercadoLibre`} />
+    <ResultsList results={props.results} />
+  </>)
 };
 
-export default SearchResults;
+export default withSearch(SearchResults);

@@ -1,9 +1,10 @@
 import React from 'react';
+import imgLogo from '../assets/logo.png';
 
-const Header = (props) => {
+const Logo = () => {
   return (
-    <div className="header-bar"><SearchBar /></div>
+    <img src={imgLogo} />
   )
 };
 
-export default Header;
+export default Logo;

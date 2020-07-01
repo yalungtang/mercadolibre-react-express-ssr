@@ -1,4 +1,5 @@
 {
+  "plugins": ["file-loader"],
   "presets": [
       "@babel/preset-env",
       "@babel/preset-react"

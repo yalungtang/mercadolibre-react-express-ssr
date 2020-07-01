@@ -5,9 +5,9 @@ import {
   Route,
   useLocation
 } from "react-router-dom";
-import Search from './Search';
+import Home from './Home';
 import SearchResults from './SearchResults';
-import Item from './Item';
+import ItemContainer from './ItemContainer';
 
 function useQuery() {
   return new URLSearchParams(useLocation().search);
@@ -30,19 +30,24 @@ const App = (props) => {
   return (
     <Switch>
       <Route exact path="/">
-        <Search triggerSearch={handleSearch} />
+        <Home triggerSearch={() => handleSearch()} />
+      </Route>
+      <Route
+        exact
+        path="/items/:id"
+        render={
+          (renderProps) => <ItemContainer
+          {...renderProps} triggerSearch={() => handleSearch()} item={initial.item} updateState={() => handleUpdateState()} />
+        }
+      />
+      <Route path="/items">
+        <SearchResults triggerSearch={() => handleSearch()} history={history} updateState={() => handleUpdateState()} searchParams={query} results={initial.searchResults} />
       </Route>
       <Route exact path="/no-hay-resultados-para-esta-busqueda">
         No hay resultados para esta busqueda
       </Route>
       <Route exact path="/error">
         Error
-      </Route>
-      <Route exact path="/items/:id">
-        <Item item={initial.item} updateState={handleUpdateState} />
-      </Route>
-      <Route path="/items">
-        <SearchResults history={history} updateState={handleUpdateState} searchParams={query} results={initial.searchResults} />
       </Route>
     </Switch>
   )

@@ -1,25 +1,14 @@
-import React, { useEffect } from 'react';
-import { withRouter } from 'react-router-dom';
-import { isEmpty } from 'lodash';
-import { getItem } from '../services';
+import React from 'react';
+import withSearch from './withSearch';
+import SEO from './SEO';
 
 const Item = (props) => {
-  useEffect(() => {
-    if (props.match.params.id !== props.item.id) {
-      const { id } = props.match ? props.match.params : {};
-      getItem(id).then((response) => props.updateState({ item: response.data.item }));
-    }
-  }, []);
-
-  if (isEmpty(props.item) || props.match.params.id !== props.item.id) {
-    return 'Loading';
-  }
-
-  const { title } = props.item;
-
   return (
-    <>{title}</>
-  )
+    <div className="item">
+      <SEO title={props.title} canonicalUrl={`items/${props.id}`} />
+      {props.title}
+    </div>
+  );
 };
 
-export default withRouter(Item);
+export default withSearch(Item);
