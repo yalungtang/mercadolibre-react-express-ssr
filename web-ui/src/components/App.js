@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory } from "react-router-dom";
 import {
   Switch,
@@ -8,24 +8,37 @@ import {
 import Home from './Home';
 import SearchResults from './SearchResults';
 import ItemContainer from './ItemContainer';
-
-function useQuery() {
-  return new URLSearchParams(useLocation().search);
-}
+import { searchApi } from '../services';
 
 const App = (props) => {
   let history = useHistory();
-  let query = useQuery();
-  const [initial, updateInitial] = useState({ ...props });
+  const [state, updateState] = useState({ ...props });
 
   const handleSearch = (value) => {
     history.push(`/items?search=${value}`);
-    updateInitial({ item: {}, searchResults: {} });
+    updateState({ searchParams: value, searchResults: {}, item: {} });
   };
 
   const handleUpdateState = (update) => {
-    updateInitial({ ...initial, ...update });
+    updateState({ ...state, ...update });
   };
+
+  useEffect(() => {
+    console.log('search params', state.searchParams)
+    if (state.searchParams !== props.searchParams) {
+      searchApi(state.searchParams).then((response) => {
+        updateState({ ...state, searchResults: response.data })
+      }).catch((e) => {
+        if (e.response.status === 404) {
+          history.push('/no-hay-resultados-para-esta-busqueda')
+          updateState({ ...state, searchResults: {}, item: {} });
+        } else {
+          history.push('/error')
+          updateState({ ...state, searchResults: {}, item: {} });
+        }
+      });
+    }
+  }, [state.searchParams]);
 
   return (
     <Switch>
@@ -36,11 +49,11 @@ const App = (props) => {
         exact
         path="/items/:id"
         render={
-          (renderProps) => <ItemContainer {...renderProps} item={initial.item} triggerSearch={handleSearch} updateState={handleUpdateState} />
+          (renderProps) => <ItemContainer {...renderProps} item={state.item} triggerSearch={handleSearch} updateState={handleUpdateState} />
         }
       />
       <Route path="/items">
-        <SearchResults triggerSearch={handleSearch} history={history} updateState={handleUpdateState} searchParams={query} results={initial.searchResults} />
+        <SearchResults triggerSearch={handleSearch} history={history} updateState={handleUpdateState} query={state.nextSearch} results={state.searchResults} />
       </Route>
       <Route exact path="/no-hay-resultados-para-esta-busqueda">
         No hay resultados para esta busqueda

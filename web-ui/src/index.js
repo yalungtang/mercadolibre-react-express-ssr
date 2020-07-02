@@ -7,7 +7,8 @@ import { createBrowserHistory } from "history";
 const history = createBrowserHistory();
 
 let container = document.getElementById('root');
-const initialProps = JSON.parse(container.getAttribute('data-init'));
+const initialProps = window.__INITIAL_STATE;
+console.log('initial props', initialProps)
 let component = (
   <Router history={history} >
     <App {...initialProps} />

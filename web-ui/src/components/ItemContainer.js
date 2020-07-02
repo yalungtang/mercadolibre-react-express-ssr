@@ -5,7 +5,7 @@ import Item from './Item';
 
 const ItemContainer = (props) => {
   useEffect(() => {
-    if (props.item && props.match.params.id !== props.item.id) {
+    if (!props.item || props.match.params.id !== props.item.id) {
       const { id } = props.match ? props.match.params : {};
       getItem(id).then((response) => props.updateState({ item: response.data.item }));
     }

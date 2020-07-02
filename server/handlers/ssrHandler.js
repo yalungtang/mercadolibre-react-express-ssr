@@ -21,8 +21,12 @@ const replaceApp = (request, response, initialProps) => {
     );
     const helmet = Helmet.renderStatic();
     response.send(data.replace(
+      '<script></script>',
+      `<script>
+        window.__INITIAL_STATE = ${JSON.stringify(initialProps)}
+      </script>`).replace(
       '<div id="root"></div>',
-      `<div id="root" data-init='${JSON.stringify(initialProps)}'>
+      `<div id="root">
         ${stringApp}
       </div>`).replace(
         '</head>',
@@ -47,7 +51,7 @@ const ssrHandler = (request, response) => {
   } else if (searchQuery) {
     axios.get(`http://localhost:3000/api/items?search=${searchQuery}`).then((r) => {
       const { items, categories } = r.data;
-      replaceApp(request, response, { searchResults: { items, categories } })
+      replaceApp(request, response, { searchResults: { items, categories }, searchParams: searchQuery })
     }).catch((e) => response.status(404).send('No results'));
   } else {
     replaceApp(request, response, {})

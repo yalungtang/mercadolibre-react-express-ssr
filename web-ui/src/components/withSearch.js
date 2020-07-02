@@ -2,20 +2,11 @@ import React from 'react';
 import Header from './Header';
 
 const withSearch = (WrappedComponent) => {
-  console.log('with search called ');
   return (props) =>
     (
       <>
         <Header {...props} />
         <WrappedComponent {...props} />
-        <div className="wrapper">
-          <div className="one">One</div>
-          <div className="two">Two</div>
-          <div className="three">Three</div>
-          <div className="four">Four</div>
-          <div className="five">Five</div>
-          <div className="six">Six</div>
-        </div>
         <section>
           <h2>Default</h2>
           <div className="grid">
