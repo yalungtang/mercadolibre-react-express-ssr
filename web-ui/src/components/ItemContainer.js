@@ -16,7 +16,7 @@ const ItemContainer = (props) => {
   }
 
   return (
-    <Item {...props.item} />
+    <Item {...props} />
   )
 };
 

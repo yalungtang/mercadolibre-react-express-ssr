@@ -3,10 +3,11 @@ import withSearch from './withSearch';
 import SEO from './SEO';
 
 const Item = (props) => {
+  const { title, id } = props.item;
   return (
     <div className="item">
-      <SEO title={props.title} canonicalUrl={`items/${props.id}`} />
-      {props.title}
+      <SEO title={title} canonicalUrl={`items/${id}`} />
+      {title}
     </div>
   );
 };

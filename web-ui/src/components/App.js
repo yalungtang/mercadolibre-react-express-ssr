@@ -30,18 +30,17 @@ const App = (props) => {
   return (
     <Switch>
       <Route exact path="/">
-        <Home triggerSearch={() => handleSearch()} />
+        <Home triggerSearch={handleSearch} />
       </Route>
       <Route
         exact
         path="/items/:id"
         render={
-          (renderProps) => <ItemContainer
-          {...renderProps} triggerSearch={() => handleSearch()} item={initial.item} updateState={() => handleUpdateState()} />
+          (renderProps) => <ItemContainer {...renderProps} item={initial.item} triggerSearch={handleSearch} updateState={handleUpdateState} />
         }
       />
       <Route path="/items">
-        <SearchResults triggerSearch={() => handleSearch()} history={history} updateState={() => handleUpdateState()} searchParams={query} results={initial.searchResults} />
+        <SearchResults triggerSearch={handleSearch} history={history} updateState={handleUpdateState} searchParams={query} results={initial.searchResults} />
       </Route>
       <Route exact path="/no-hay-resultados-para-esta-busqueda">
         No hay resultados para esta busqueda

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 const SearchBar = (props) => {
+  console.log('props in searchbar', props)
   const [inputValue, updateInput] = useState('');
 
   const handleKeyDown = (e) => {
