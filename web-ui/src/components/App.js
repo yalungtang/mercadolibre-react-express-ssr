@@ -24,7 +24,6 @@ const App = (props) => {
   };
 
   useEffect(() => {
-    console.log('search params', state.searchParams)
     if (state.searchParams !== props.searchParams) {
       searchApi(state.searchParams).then((response) => {
         updateState({ ...state, searchResults: response.data })
