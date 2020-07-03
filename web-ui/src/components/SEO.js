@@ -5,7 +5,7 @@ import logoImg from '../assets/logo.png';
 const SEO = (props) => {
   const baseRoute = 'http://localhost:3000/';
   const { title, content, ogImg, canonicalUrl } = props;
-  const defaultContent = "Wrapper de la API de Mercado Libre con interfaz grafica en React.js, SSR con node y express.js, SEO con React Helmet";
+  const defaultContent = "Wrapper de la API de Mercado Libre con interfaz grafica en React.js, SSR con node y express.js, SEO con React Helmet by Yalung Tang";
   return (
     <Helmet>
       <meta charSet="utf-8" />

@@ -10,7 +10,7 @@ const SearchResults = (props) => {
   }
 
   return (<>
-    <SEO title={`Resultados de "${props.query}" | MercadoLibre`} />
+    <SEO title={`Resultados de "${props.search}" | MercadoLibre`} />
     <ResultsList results={props.results} />
   </>)
 };

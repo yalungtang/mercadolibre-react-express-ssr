@@ -1,5 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
+
 
 module.exports = {
   entry: './web-ui/src',
@@ -23,7 +25,18 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-react']
+            presets: [
+              '@babel/preset-react',
+              [
+                "@babel/preset-env",
+                {
+                  "targets": {
+                    "chrome": "58",
+                    "ie": "11"
+                  }
+                }
+              ]
+            ]
           }
         }
       },
@@ -34,5 +47,11 @@ module.exports = {
         ]
       }
     ]
-  }
+  },
+  optimization: {
+    usedExports: true,
+    minimizer: [
+     new TerserPlugin()
+    ]
+   },
 }

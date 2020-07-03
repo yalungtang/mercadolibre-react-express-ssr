@@ -4,6 +4,7 @@ $breakpoint-m: 48em;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   grid-gap: 1em;
+  padding: 0 4em;
 }
 
 .width-1\/12 {
@@ -127,8 +128,7 @@ $breakpoint-m: 48em;
 }
 
 .grid__item {
-  padding: 1em;
-  background: #efefef;
+  padding: 8px 1em;
   text-align: center;
 }
 

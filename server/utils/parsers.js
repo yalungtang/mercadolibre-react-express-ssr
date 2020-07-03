@@ -1,4 +1,5 @@
 import { author } from '../constants';
+import { isEmpty } from 'lodash';
 
 const parseSingleItem = (rawItem) => {
   const {
@@ -31,11 +32,10 @@ const parseSingleItem = (rawItem) => {
 
 export const parseSearchResponse = (response) => {
   const items = response.results.map((item) => parseSingleItem(item));
-  const categories = response.available_filters[0].values.map((category) => category.name);
-
+  const categoryFilter = response.filters.find((filter) => filter.id === 'category');
   return {
     author,
-    categories,
+    categories: !isEmpty(categoryFilter) ? categoryFilter.values[0].path_from_root.map((cat) => cat.name) : [],
     items
   }
 };

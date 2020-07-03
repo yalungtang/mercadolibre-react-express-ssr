@@ -51,7 +51,7 @@ const ssrHandler = (request, response) => {
   } else if (searchQuery) {
     axios.get(`http://localhost:3000/api/items?search=${searchQuery}`).then((r) => {
       const { items, categories } = r.data;
-      replaceApp(request, response, { searchResults: { items, categories }, searchParams: searchQuery })
+      replaceApp(request, response, { searchResults: { items, categories }, search: searchQuery })
     }).catch((e) => response.status(404).send('No results'));
   } else {
     replaceApp(request, response, {})
