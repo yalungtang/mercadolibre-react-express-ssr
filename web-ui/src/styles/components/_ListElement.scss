@@ -1,0 +1,40 @@
+.product-list__element {
+  border-bottom: solid $gray-light 1px;
+  padding: 16px 0;
+  color: $gray-dark;
+}
+
+.product-list__content {
+  display: flex;
+}
+
+.product-list__thumbnail {
+  padding-right: 16px;
+  height: 180px;
+  width: 180px;
+
+  img {
+    height: 180px;
+    width: 180px;
+    border-radius: 4px;
+  }
+}
+
+.product-list__price {
+  padding-top: 16px;
+  padding-bottom: 32px;
+  font-size: $font-search-price-size;
+}
+
+.product-list__title {
+  font-size: $font-search-title-size;
+
+  a {
+    color: $gray-dark;
+  }
+}
+
+.product-list__address {
+  padding-top: 16px;;
+  font-size: $font-location-size;
+}

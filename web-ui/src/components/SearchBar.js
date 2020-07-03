@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import Logo from './Logo';
 import SearchIcon from './SearchIcon';
 import { isEmpty } from 'lodash';
@@ -24,7 +25,9 @@ const SearchBar = (props) => {
 
   return (
     <div className="search-bar">
-      <Logo />
+      <Link style={{ height: 36 }} to="/">
+        <Logo />
+      </Link>
       <form className="nav-search" onSubmit={(e) => e.preventDefault()}>
         <input placeholder={'Nunca dejes de buscar'} onChange={handleOnChange} value={inputValue} type="text" onKeyDown={handleKeyDown} />
         <button type="submit" onClick={() => props.triggerSearch(inputValue)}><SearchIcon /></button>

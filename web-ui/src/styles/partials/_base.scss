@@ -9,10 +9,17 @@ body {
   color: $text-color;
   text-align: left;
   background-color: $body-bg;
+
+  a {
+    text-decoration: none;
+  }
 }
 
-.page-content {
-  background-color: $gray-light;
+.page-box {
+  background-color: $white;
+  padding: 0 16px;
+  margin-top: 16px;
+  border-radius: 4px;
 }
 
 // Retina

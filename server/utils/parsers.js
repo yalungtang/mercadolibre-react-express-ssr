@@ -11,7 +11,8 @@ const parseSingleItem = (rawItem) => {
     condition,
     shipping: {
       free_shipping
-    }
+    },
+    address
   } = rawItem;
 
   const pricePair = price.toString().split('.');
@@ -32,7 +33,7 @@ const parseSingleItem = (rawItem) => {
 
 export const parseSearchResponse = (response) => {
   const items = response.results
-    .map((item) => parseSingleItem(item));
+    .map((item) => ({ ...parseSingleItem(item), address: item.address.state_name }));
   const categoryFilter = response.filters.find((filter) => filter.id === 'category');
 
   return {

@@ -9,7 +9,7 @@ const Breadcrumbs = (props) => {
         categories.map(
           (category, index) => (
             <span className="single-breadcrumb">
-              {category} {index !== props.categories.length && '> '}
+              {category} {index !== props.categories.length - 1 && '> '}
             </span>
           )
         )
