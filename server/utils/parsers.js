@@ -11,8 +11,7 @@ const parseSingleItem = (rawItem) => {
     condition,
     shipping: {
       free_shipping
-    },
-    address
+    }
   } = rawItem;
 
   const pricePair = price.toString().split('.');
@@ -43,7 +42,7 @@ export const parseSearchResponse = (response) => {
   }
 };
 
-export const parseItemResponse = (itemResponse) => {
+export const parseItemResponse = (itemResponse, description, categories) => {
   const {
     sold_quantity,
   } = itemResponse;
@@ -52,7 +51,9 @@ export const parseItemResponse = (itemResponse) => {
       author,
       item: {
         ...parseSingleItem(itemResponse),
-        sold_quantity
+        sold_quantity,
+        categories,
+        description
       }
     }
   );

@@ -9,11 +9,14 @@ const handleGetItem = (request, response) => {
 
   if (id) {
     Promise.allSettled([item, description]).then((responses) => {
-      response.send({
-        ...parseItemResponse(responses[0].value.data),
-        description: responses[1].status === "rejected" ? '' : responses[0].value.plain_text
+      axios.get(`https://api.mercadolibre.com/categories/${responses[0].value.data.category_id}`).then((catResponse) => {
+        response.send(parseItemResponse(
+          responses[0].value.data,
+          responses[1].status === "rejected" ? '' : responses[1].value.data.plain_text,
+          catResponse.data.path_from_root ? catResponse.data.path_from_root.map((catList) => catList.name) : []
+        ));
       });
-    })//.catch(e => response.status(404).send('No item found'));
+    });
   } else {
     response.end();
   }

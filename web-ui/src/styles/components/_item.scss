@@ -1,0 +1,32 @@
+.item {
+    padding-top: 16px;
+}
+
+.item__content {
+   font-size: $font-description-content-size;
+}
+
+.item__description_title {
+    font-size: $font-description-title-size;
+}
+
+.item__sidebar {
+}
+
+.item__title {
+    font-size: $font-single-title-size;
+}
+
+.item__price {
+    font-size: $font-single-price-size;
+}
+
+.item__stats {
+    font-size: $font-condition-size;
+}
+
+.button__primary {
+    border: none;
+    background-color: $blue;
+    color: $white;
+}

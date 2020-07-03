@@ -3,6 +3,9 @@ import withSearch from './withSearch';
 
 const Breadcrumbs = (props) => {
   const { categories } = props;
+  if (!categories || !categories.length) {
+    return null;
+  }
   return (
     <div className="breadcrumbs">
       {
