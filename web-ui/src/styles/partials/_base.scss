@@ -11,6 +11,10 @@ body {
   background-color: $body-bg;
 }
 
+.page-content {
+  background-color: $gray-light;
+}
+
 // Retina
 @media 
 (-webkit-min-device-pixel-ratio: 2), 

@@ -30,10 +30,7 @@ module.exports = {
               [
                 "@babel/preset-env",
                 {
-                  "targets": {
-                    "chrome": "58",
-                    "ie": "11"
-                  }
+                  "useBuiltIns": "entry"
                 }
               ]
             ]

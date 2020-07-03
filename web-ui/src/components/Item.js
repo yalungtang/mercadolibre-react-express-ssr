@@ -3,6 +3,9 @@ import withSearch from './withSearch';
 import SEO from './SEO';
 
 const Item = (props) => {
+  if (props.isLoading) {
+    return "is loading";
+  }
   const { title, id } = props.item;
   return (
     <div className="item">

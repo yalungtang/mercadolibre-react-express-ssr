@@ -31,8 +31,10 @@ const parseSingleItem = (rawItem) => {
 };
 
 export const parseSearchResponse = (response) => {
-  const items = response.results.map((item) => parseSingleItem(item));
+  const items = response.results
+    .map((item) => parseSingleItem(item));
   const categoryFilter = response.filters.find((filter) => filter.id === 'category');
+
   return {
     author,
     categories: !isEmpty(categoryFilter) ? categoryFilter.values[0].path_from_root.map((cat) => cat.name) : [],

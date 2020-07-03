@@ -11,12 +11,10 @@ const ItemContainer = (props) => {
     }
   }, []);
 
-  if (isEmpty(props.item) || props.match.params.id !== props.item.id) {
-    return 'Loading';
-  }
+  const isLoading = isEmpty(props.item) || props.match.params.id !== props.item.id;
 
   return (
-    <Item {...props} />
+    <Item {...props} isLoading={isLoading} />
   )
 };
 

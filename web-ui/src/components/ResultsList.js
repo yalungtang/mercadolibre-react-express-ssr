@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { isEmpty } from 'lodash';
+import ListElement from './ListElement';
 
 const ResultsList = (props) => {
   const { results } = props; 
@@ -9,7 +9,7 @@ const ResultsList = (props) => {
   }
   return (
     <>{results.items.map((item) => {
-      return <div><Link to={`/items/${item.id}`}>{item.title}</Link></div>
+      return <ListElement {...item} />
     })}</>
   )
 };
