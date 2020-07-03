@@ -16,6 +16,7 @@ const Item = (props) => {
   const { item: { title, id, categories, condition, sold_quantity, price, picture, description } } = props;
   const handleBuy = (e) => {
     e.preventDefault();
+    console.log('Buy', id);
   }
   return (
     <>
@@ -24,27 +25,29 @@ const Item = (props) => {
       <div className="page-box">
         <article className="grid item">
           <div className="item__content width-12/12 width-9/12@m">
-            <img src={picture} />
-            <div className="item__description_tile">
-              Descripcion del producto
+            <div className="item__picture_container">
+              <img className="item__picture" src={picture} />
             </div>
-            <div className="item__description_tile">
+            <div className="item__description">
+              <div className="item__description_title">
+                Descripcion del producto
+            </div>
               {description}
             </div>
           </div>
           <div className="item__sidebar width-12/12 width-3/12@m">
-            <div className="item_stats">
+            <div className="item__stats">
               {conditionMap[condition]} - {sold_quantity} vendidos
             </div>
-            <div className="item_title">
+            <div className="item__title">
               {title}
             </div>
-            <div className="item_price">
+            <div className="item__price">
               <Price {...price} />
             </div>
-            <button onClick={handleBuy} className="button-primary">
+            <a href="#" onClick={handleBuy} className="button__primary">
               Comprar
-            </button>
+            </a>
           </div>
         </article>
       </div>

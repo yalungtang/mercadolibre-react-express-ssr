@@ -9,6 +9,9 @@ const currencyMap = {
 const THOUSAND_SEPARATOR = '.';
 
 const separateThousands = (amount) => {
+  if (amount.length < 4) {
+    return amount;
+  }
   let amountCharArray = [];
   const reversedAmount = amount.split('').reverse();
   for (let i = 0; i < amount.length; i++) {

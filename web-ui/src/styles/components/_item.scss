@@ -1,23 +1,32 @@
 .item {
-    padding-top: 16px;
+    padding-top: 32px;
 }
 
 .item__content {
    font-size: $font-description-content-size;
 }
 
+.item__description {
+    padding: 0 0 32px 32px;
+    font-size: $font-description-content-size;
+}
+
 .item__description_title {
     font-size: $font-description-title-size;
+    padding-bottom: 32px;
 }
 
 .item__sidebar {
+    color: $black;
 }
 
 .item__title {
+    margin-top: 16px;
     font-size: $font-single-title-size;
 }
 
 .item__price {
+    margin-top: 32px;
     font-size: $font-single-price-size;
 }
 
@@ -25,8 +34,23 @@
     font-size: $font-condition-size;
 }
 
+.item__picture {
+    width: 100%;
+    height: auto;
+}
+
+.item__picture_container {
+    max-width: 680px;
+}
+
 .button__primary {
+    display: block;
+    margin-top: 32px;
     border: none;
     background-color: $blue;
     color: $white;
+    width: 100%;
+    text-align: center;
+    border-radius: 4px;
+    padding: 8px;
 }

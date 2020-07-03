@@ -12,8 +12,8 @@ const ResultsList = (props) => {
     <>
       <Breadcrumbs categories={results.categories} />
       <div className="page-box">
-        {results.items.map((item) => {
-          return <ListElement {...item} />
+        {results.items.map((item, index) => {
+          return <ListElement key={`product-result-${index + 1}`} {...item} />
         })}
       </div>
     </>
